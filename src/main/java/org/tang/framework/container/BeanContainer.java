@@ -9,9 +9,11 @@ import java.lang.annotation.Annotation;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class BeanContainer {
-
 
     private static Map<String, Object> beanMap = new ConcurrentHashMap<String, Object>();
 

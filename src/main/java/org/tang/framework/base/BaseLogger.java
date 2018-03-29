@@ -2,6 +2,7 @@ package org.tang.framework.base;
 
 
 import com.alibaba.fastjson.JSON;
+import lombok.Data;
 import org.apache.log4j.Logger;
 import org.tang.framework.util.AspectUtil;
 import org.tang.framework.util.StringUtil;
@@ -11,6 +12,7 @@ import org.tang.framework.util.StringUtil;
  *
  * @author Max
  */
+@Data
 public class BaseLogger {
 
     private Logger logger;
@@ -51,15 +53,6 @@ public class BaseLogger {
     public static BaseLogger getLogger(String name) {
         Logger logger = Logger.getLogger(name);
         return new BaseLogger(logger);
-    }
-
-
-    public Logger getLogger() {
-        return logger;
-    }
-
-    public void setLogger(Logger logger) {
-        this.logger = logger;
     }
 
     public void info(Object message) {

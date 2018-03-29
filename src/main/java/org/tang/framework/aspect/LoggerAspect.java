@@ -10,13 +10,15 @@ import org.tang.framework.util.StringUtil;
 
 import java.lang.reflect.Method;
 
+/***
+ * @author tang
+ * */
 @InitBean
 public class LoggerAspect {
 
 
     /**
      * 日志标头设置
-     *
      * @param wrapper
      * @return
      * @throws Throwable

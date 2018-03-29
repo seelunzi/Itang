@@ -1,11 +1,15 @@
 package org.tang.framework.jdbc.entity;
 
+import lombok.Data;
 import org.tang.framework.entity.BaseModel;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/***
+ * @author tang
+ * */
 
 @SuppressWarnings("serial")
 public class Where extends BaseModel {
@@ -13,7 +17,6 @@ public class Where extends BaseModel {
 
     /**
      * 设置参数
-     *
      * @param fieldName   字段名
      * @param symbol      操作符
      * @param fieldValues 字段值
@@ -70,34 +73,11 @@ public class Where extends BaseModel {
         wheres.clear();
     }
 
+    @Data
     public static class ThisWhere {
         private String fieldName;
         private String symbol;
         private List<Object> fieldValues;
-
-        public String getFieldName() {
-            return fieldName;
-        }
-
-        public void setFieldName(String fieldName) {
-            this.fieldName = fieldName;
-        }
-
-        public String getSymbol() {
-            return symbol;
-        }
-
-        public void setSymbol(String symbol) {
-            this.symbol = symbol;
-        }
-
-        public List<Object> getFieldValues() {
-            return fieldValues;
-        }
-
-        public void setFieldValues(List<Object> fieldValues) {
-            this.fieldValues = fieldValues;
-        }
     }
 
 }

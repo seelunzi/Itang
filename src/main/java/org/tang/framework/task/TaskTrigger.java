@@ -16,11 +16,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-
+/***
+ * @author tang
+ * */
 public class TaskTrigger {
 
     static Logger logger = Logger.getLogger(TaskTrigger.class);
-
 
     public static Method getTriggerMethod() {
         Method[] methods = TaskTrigger.class.getDeclaredMethods();
@@ -66,7 +67,7 @@ public class TaskTrigger {
     /**
      * 定时任务管理
      *
-     * @param pjp
+     * @param aspect
      * @return
      * @throws Throwable
      */

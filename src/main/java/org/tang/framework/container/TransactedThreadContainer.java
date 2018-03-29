@@ -9,9 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/***
+ * @author tang
+ * */
 @SuppressWarnings({"unchecked"})
-
 public class TransactedThreadContainer {
 
 
@@ -32,7 +33,7 @@ public class TransactedThreadContainer {
      *
      * @return
      */
-    public static boolean hasTransacted() {
+    public static Boolean hasTransacted() {
 
         Map<String, Object> threadContainer = threadTransactedContainer.get();
         if (StringUtil.isNullOrEmpty(threadContainer)) {

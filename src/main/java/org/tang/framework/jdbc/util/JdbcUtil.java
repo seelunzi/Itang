@@ -3,7 +3,7 @@ package org.tang.framework.jdbc.util;
 import org.tang.framework.entity.BeanEntity;
 import org.tang.framework.jdbc.annotation.Column;
 import org.tang.framework.jdbc.annotation.Table;
-import org.tang.framework.jdbc.entity.JDBCEntity;
+import org.tang.framework.jdbc.entity.JdbcEntity;
 import org.tang.framework.jdbc.entity.Pager;
 import org.tang.framework.jdbc.entity.Where;
 import org.tang.framework.util.PropertUtil;
@@ -236,7 +236,7 @@ public class JdbcUtil {
      * @param pager 分页条件
      * @return
      */
-    public static JDBCEntity parseSQL(Object obj, Where where, Pager pager,
+    public static JdbcEntity parseSQL(Object obj, Where where, Pager pager,
                                       String orderField, Boolean isDesc) {
         if (obj == null) {
             return null;
@@ -290,7 +290,7 @@ public class JdbcUtil {
         if (!StringUtil.isNullOrEmpty(pager)) {
             sb.append(parsPagerSQL(pager));
         }
-        return new JDBCEntity(sb.toString(), params.toArray());
+        return new JdbcEntity(sb.toString(), params.toArray());
     }
 
     /**
@@ -323,7 +323,7 @@ public class JdbcUtil {
      * map转为对象
      *
      * @param cla
-     * @param sourceMap
+     * @param sourceMaps
      * @return
      */
     @SuppressWarnings("unchecked")

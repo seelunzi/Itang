@@ -1,5 +1,6 @@
 package org.tang.framework.container;
 
+import lombok.Data;
 import org.tang.framework.entity.BaseModel;
 import org.tang.framework.entity.BeanEntity;
 
@@ -9,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings("unchecked")
 public class MappingContainer {
 
@@ -31,6 +35,7 @@ public class MappingContainer {
     }
 
     @SuppressWarnings("serial")
+    @Data
     public static class MvcMapping extends BaseModel {
 
         private String path;
@@ -40,39 +45,5 @@ public class MappingContainer {
         private Object bean;
 
         private List<BeanEntity> paramTypes;
-
-
-        public String getPath() {
-            return path;
-        }
-
-        public void setPath(String path) {
-            this.path = path;
-        }
-
-        public Method getMethod() {
-            return method;
-        }
-
-        public void setMethod(Method method) {
-            this.method = method;
-        }
-
-        public Object getBean() {
-            return bean;
-        }
-
-        public void setBean(Object bean) {
-            this.bean = bean;
-        }
-
-        public List<BeanEntity> getParamTypes() {
-            return paramTypes;
-        }
-
-        public void setParamTypes(List<BeanEntity> paramTypes) {
-            this.paramTypes = paramTypes;
-        }
-
     }
 }

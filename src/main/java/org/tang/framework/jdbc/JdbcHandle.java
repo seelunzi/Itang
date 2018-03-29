@@ -8,7 +8,7 @@ import org.tang.framework.container.TransactedThreadContainer;
 import org.tang.framework.entity.BaseModel;
 import org.tang.framework.entity.BeanEntity;
 import org.tang.framework.jdbc.annotation.Column;
-import org.tang.framework.jdbc.entity.JDBCEntity;
+import org.tang.framework.jdbc.entity.JdbcEntity;
 import org.tang.framework.jdbc.entity.Pager;
 import org.tang.framework.jdbc.entity.Where;
 import org.tang.framework.jdbc.util.JdbcUtil;
@@ -143,7 +143,7 @@ public class JdbcHandle {
      * 执行SQL更新语句
      *
      * @param sql     语句
-     * @param paraMap 参数
+     * @param params 参数
      * @return
      */
     public Long baseUpdate(String sql, Object... params) {
@@ -218,7 +218,7 @@ public class JdbcHandle {
      * 执行SQL语句
      *
      * @param sql
-     * @param paraMap 参数map容器
+     * @param paras 参数map容器
      * @return 结果集
      */
     public List<Map<String, Object>> query(String sql, Object... paras) {
@@ -242,7 +242,8 @@ public class JdbcHandle {
      * @return
      */
     public Map<String, Object> queryFirst(String sql, Object... paras) {
-        if (!sql.toLowerCase().contains("limit")) {
+        String limit = "limit";
+        if (!sql.toLowerCase().contains(limit)) {
             sql = sql + " limit 1";
         }
         List<Map<String, Object>> list = query(sql, paras);
@@ -420,7 +421,7 @@ public class JdbcHandle {
      *
      * @param obj   对象
      * @param where where条件
-     * @param pager 分页对象
+     * @param isDesc 分页对象
      * @return
      */
     public <T> List<T> findBean(Object obj, Where where, String orderField, Boolean isDesc) {
@@ -432,7 +433,6 @@ public class JdbcHandle {
      * 根据对象查询对象集合
      *
      * @param obj   对象
-     * @param where where条件
      * @param pager 分页对象
      * @return
      */
@@ -498,9 +498,8 @@ public class JdbcHandle {
     /**
      * 根据对象条件进行查询
      *
-     * @param cla
-     * @param fieldName
-     * @param fieldValue
+     * @param obj
+     * @param where
      * @param orderField
      * @param isDesc
      * @return
@@ -556,7 +555,7 @@ public class JdbcHandle {
      */
     public List<Map<String, Object>> findRecord(Object obj, Where where, Pager pager, String orderField,
                                                 Boolean isDesc) {
-        JDBCEntity jDBCEntity = JdbcUtil.parseSQL(obj, where, pager, orderField, isDesc);
+        JdbcEntity jDBCEntity = JdbcUtil.parseSQL(obj, where, pager, orderField, isDesc);
         return baseQuery(jDBCEntity.getSql(), jDBCEntity.getParams());
     }
 
@@ -598,7 +597,7 @@ public class JdbcHandle {
                 where.set(key, value);
             }
         }
-        JDBCEntity jDBCEntity = JdbcUtil.parseSQL(cla, where, null, orderField, isDesc);
+        JdbcEntity jDBCEntity = JdbcUtil.parseSQL(cla, where, null, orderField, isDesc);
         return baseQuery(jDBCEntity.getSql(), jDBCEntity.getParams());
     }
 
@@ -651,7 +650,7 @@ public class JdbcHandle {
      * @return
      */
     public Pager findPager(Object obj, Where where, Pager pager, String orderField, Boolean isDesc) {
-        JDBCEntity jDBCEntity = JdbcUtil.parseSQL(obj, where, pager, orderField, isDesc);
+        JdbcEntity jDBCEntity = JdbcUtil.parseSQL(obj, where, pager, orderField, isDesc);
         Integer totalRows = getCount(jDBCEntity.getSql(), jDBCEntity.getParams());
         pager.setTotalRows(totalRows);
         List<Map<String, Object>> list = baseQuery(jDBCEntity.getSql(), jDBCEntity.getParams());
@@ -669,7 +668,7 @@ public class JdbcHandle {
      * @return
      */
     public Pager findFieldPager(Object obj, String queryField, Where where, Pager pager) {
-        JDBCEntity jDBCEntity = JdbcUtil.parseSQL(obj, where, pager, null, null);
+        JdbcEntity jDBCEntity = JdbcUtil.parseSQL(obj, where, pager, null, null);
         jDBCEntity.setSql(jDBCEntity.getSql().replace("select *", "select " + queryField));
         Integer totalRows = getCount(jDBCEntity.getSql(), jDBCEntity.getParams());
         pager.setTotalRows(totalRows);
@@ -683,7 +682,7 @@ public class JdbcHandle {
      * 根据语句和条件查询总记录数
      *
      * @param sql 语句
-     * @param map 条件容器
+     * @param params 条件容器
      * @return
      */
     public Integer getCount(String sql, Object... params) {
@@ -745,14 +744,14 @@ public class JdbcHandle {
     public Long update(Object obj, String... priKeyNames) {
         try {
             if (obj == null) {
-                return -1l;
+                return -1L;
             }
             // 获取表名
             String tableName = JdbcUtil.getTableName(obj);
             // 获取属性列表
             List<BeanEntity> prpres = PropertUtil.getBeanFields(obj);
             if (prpres == null || prpres.isEmpty()) {
-                return -1l;
+                return -1L;
             }
             List<String> priKeys = Arrays.<String>asList(priKeyNames);
             // 拼接SQL语句
@@ -824,14 +823,14 @@ public class JdbcHandle {
     public Long insert(Object obj) {
         try {
             if (obj == null) {
-                return -1l;
+                return -1L;
             }
             // 获取表名
             String tableName = JdbcUtil.getTableName(obj);
             // 获取属性列表
             List<BeanEntity> prpres = PropertUtil.getBeanFields(obj);
             if (prpres == null || prpres.isEmpty()) {
-                return -1l;
+                return -1L;
             }
             // 拼接SQL语句
             StringBuilder sql = new StringBuilder(MessageFormat.format("insert into {0} set ", tableName));
@@ -870,7 +869,6 @@ public class JdbcHandle {
      * 根据对象进行插入或更新
      *
      * @param obj
-     * @param priKeyName
      * @return
      */
     public Long saveOrUpdateAuto(Object obj) {
@@ -886,7 +884,7 @@ public class JdbcHandle {
      */
     public Long saveOrUpdateAuto(Object obj, String... addFields) {
         if (obj == null) {
-            return -1l;
+            return -1L;
         }
         // 获取表名
         String tableName = JdbcUtil.getTableName(obj);
@@ -895,7 +893,7 @@ public class JdbcHandle {
         List<Object> paras = new ArrayList<Object>();
         String diySql = parseFieldSql(obj, paras);
         if (StringUtil.isNullOrEmpty(diySql)) {
-            return -1l;
+            return -1L;
         }
         sql.append(diySql);
         sql.append(" ON DUPLICATE KEY UPDATE ");

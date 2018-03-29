@@ -9,7 +9,6 @@ import java.util.Map;
 
 /**
  * 参数适配器
- *
  * @author admin
  */
 public class ParamsAdapt {
@@ -47,7 +46,6 @@ public class ParamsAdapt {
             }
             return params;
         }
-
         return new Object[paramTypes.length];
     }
 }

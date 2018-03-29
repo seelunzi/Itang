@@ -3,11 +3,13 @@ package org.tang.framework.container;
 import java.util.HashMap;
 import java.util.Map;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings("unchecked")
 public class ThreadContainer {
 
     public static ThreadLocal<Map<String, Object>> threadLocal = new ThreadLocal<Map<String, Object>>();
-
 
     public static <T> T get(String fieldName) {
         initThreadContainer();

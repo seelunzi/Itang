@@ -10,6 +10,9 @@ import org.tang.framework.util.StringUtil;
 import java.sql.Connection;
 import java.util.List;
 
+/***
+ * @author tang
+ * */
 @InitBean
 public class TransactedAspect {
 

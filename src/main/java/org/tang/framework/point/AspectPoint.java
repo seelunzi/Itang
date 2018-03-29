@@ -6,9 +6,6 @@ import org.tang.framework.entity.BaseModel;
 
 import java.lang.reflect.Method;
 
-/***
- * @author tang
- * */
 @SuppressWarnings("serial")
 @Data
 public class AspectPoint extends BaseModel {
@@ -21,4 +18,10 @@ public class AspectPoint extends BaseModel {
     private Method currentAspectMethod;
     private AspectPoint childAspect;
 
+    public Object invoke() throws Throwable {
+        if (childAspect != null) {
+            return childAspect.getCurrentAspectMethod().invoke(bean, childAspect);
+        }
+        return proxy.invokeSuper(bean, params);
+    }
 }

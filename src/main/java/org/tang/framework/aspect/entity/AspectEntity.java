@@ -1,10 +1,15 @@
 package org.tang.framework.aspect.entity;
 
+import lombok.Data;
 import org.tang.framework.entity.BaseModel;
 
 import java.lang.reflect.Method;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings("serial")
+@Data
 public class AspectEntity extends BaseModel {
 
     private Class<?>[] annotationClass;
@@ -14,38 +19,4 @@ public class AspectEntity extends BaseModel {
     private String classMappath;
 
     private Method aspectInvokeMethod;
-
-
-    public Method getAspectInvokeMethod() {
-        return aspectInvokeMethod;
-    }
-
-    public void setAspectInvokeMethod(Method aspectInvokeMethod) {
-        this.aspectInvokeMethod = aspectInvokeMethod;
-    }
-
-    public Class<?>[] getAnnotationClass() {
-        return annotationClass;
-    }
-
-    public void setAnnotationClass(Class<?>[] annotationClass) {
-        this.annotationClass = annotationClass;
-    }
-
-    public String getMethodMappath() {
-        return methodMappath;
-    }
-
-    public void setMethodMappath(String methodMappath) {
-        this.methodMappath = methodMappath;
-    }
-
-    public String getClassMappath() {
-        return classMappath;
-    }
-
-    public void setClassMappath(String classMappath) {
-        this.classMappath = classMappath;
-    }
-
 }

@@ -5,8 +5,10 @@ import org.tang.framework.constant.GeneralFinal;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/***
+ * @author tang
+ * */
 public class RequestContainer {
-
 
     public static void setRequest(HttpServletRequest request) {
         ThreadContainer.set(GeneralFinal.REQUEST_WRAPPER, request);
