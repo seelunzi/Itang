@@ -53,7 +53,9 @@ public class LocalCache {
         }, validityTime * 1000, TimeUnit.DAYS);
     }
 
-    //获取缓存KEY列表
+    /**
+     * 获取缓存KEY列表
+     */
     public static Set<String> getCacheKeys() {
         return map.keySet();
     }

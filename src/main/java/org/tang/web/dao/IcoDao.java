@@ -5,12 +5,9 @@ import org.tang.web.domain.IcopTest;
 import java.util.List;
 
 public interface IcoDao {
+    IcopTest getIco(Integer id);
 
+    List<IcopTest> getIcos();
 
-    public IcopTest getIcop(Integer id);
-
-
-    public List<IcopTest> getIcops();
-
-    public Long delIcop(Integer id);
+    Long delIco(Integer id);
 }

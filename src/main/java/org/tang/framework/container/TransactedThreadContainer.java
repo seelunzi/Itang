@@ -11,6 +11,7 @@ import java.util.Map;
 
 
 @SuppressWarnings({"unchecked"})
+
 public class TransactedThreadContainer {
 
 
@@ -88,7 +89,6 @@ public class TransactedThreadContainer {
     /**
      * 从线程容器获取所有连接
      *
-     * @param source
      * @return
      */
     public static List<Connection> getConnections() {

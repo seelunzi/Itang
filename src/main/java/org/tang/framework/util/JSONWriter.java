@@ -13,10 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Coody
  * @remark json工具类, 此工具类修改过N次。改的脖子好痛啊，总算走向成熟。
- * @email 644556636@qq.com
- * @blog 54sb.org
  */
 public class JSONWriter {
     static char[] hex = "0123456789ABCDEF".toCharArray();

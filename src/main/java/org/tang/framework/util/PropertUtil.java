@@ -323,8 +323,7 @@ public class PropertUtil {
 
     /**
      * 获取注解字段值
-     *
-     * @param bean
+     * @param annotation
      * @param paraName
      * @return
      */
@@ -346,7 +345,6 @@ public class PropertUtil {
 
     /**
      * 获取字段值，支持点属性
-     *
      * @param bean
      * @param paraName
      * @return
@@ -440,8 +438,8 @@ public class PropertUtil {
     /**
      * 设置字段值
      *
-     * @param obj          实例对象
-     * @param propertyName 属性名
+     * @param object          实例对象
+     * @param field 属性名
      * @param value        新的字段值
      * @return
      * @throws IllegalAccessException
@@ -499,7 +497,7 @@ public class PropertUtil {
     /**
      * 设置字段值
      *
-     * @param obj          实例对象
+     * @param object         实例对象
      * @param propertyName 属性名
      * @param value        新的字段值
      * @return
@@ -596,7 +594,6 @@ public class PropertUtil {
      *
      * @param objs
      * @param fieldName
-     * @param isDesc
      * @return
      */
     public static <T> List<T> doSeqDesc(List<?> objs, String fieldName) {
@@ -645,8 +642,7 @@ public class PropertUtil {
     /**
      * List转为Map。fieldName作为Key，对象作为Value
      *
-     * @param objs
-     * @param fieldName
+     * @param obj
      * @return
      */
     public static Map<String, Object> beanToMap(Object obj) {
@@ -669,7 +665,6 @@ public class PropertUtil {
 
     /**
      * List转为Map。fieldName作为Key，对象作为Value
-     *
      * @param objs
      * @param fieldName
      * @return
@@ -1057,7 +1052,7 @@ public class PropertUtil {
      * 获取方法的参数名
      * </p>
      *
-     * @param m
+     * @param method
      * @return
      */
     public static List<String> getMethodParaNames(Method method) {

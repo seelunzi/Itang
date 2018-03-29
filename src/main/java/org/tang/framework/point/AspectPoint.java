@@ -1,11 +1,16 @@
 package org.tang.framework.point;
 
+import lombok.Data;
 import net.sf.cglib.proxy.MethodProxy;
 import org.tang.framework.entity.BaseModel;
 
 import java.lang.reflect.Method;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings("serial")
+@Data
 public class AspectPoint extends BaseModel {
 
     private Object bean;
@@ -16,67 +21,4 @@ public class AspectPoint extends BaseModel {
     private Method currentAspectMethod;
     private AspectPoint childAspect;
 
-
-    public Class<?> getClazz() {
-        return clazz;
-    }
-
-    public void setClazz(Class<?> clazz) {
-        this.clazz = clazz;
-    }
-
-    public Method getCurrentAspectMethod() {
-        return currentAspectMethod;
-    }
-
-    public void setCurrentAspectMethod(Method currentAspectMethod) {
-        this.currentAspectMethod = currentAspectMethod;
-    }
-
-    public AspectPoint getChildAspect() {
-        return childAspect;
-    }
-
-    public void setChildAspect(AspectPoint childAspect) {
-        this.childAspect = childAspect;
-    }
-
-    public Object getBean() {
-        return bean;
-    }
-
-    public void setBean(Object bean) {
-        this.bean = bean;
-    }
-
-    public Method getMethod() {
-        return method;
-    }
-
-    public void setMethod(Method method) {
-        this.method = method;
-    }
-
-    public MethodProxy getProxy() {
-        return proxy;
-    }
-
-    public void setProxy(MethodProxy proxy) {
-        this.proxy = proxy;
-    }
-
-    public Object[] getParams() {
-        return params;
-    }
-
-    public void setParams(Object[] params) {
-        this.params = params;
-    }
-
-    public Object invoke() throws Throwable {
-        if (childAspect != null) {
-            return childAspect.getCurrentAspectMethod().invoke(bean, childAspect);
-        }
-        return proxy.invokeSuper(bean, params);
-    }
 }

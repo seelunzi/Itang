@@ -15,17 +15,17 @@ public class IcoDaoImpl implements IcoDao {
     JdbcTemplate jdbcTemplate;
 
     @Override
-    public IcopTest getIcop(Integer id) {
+    public IcopTest getIco(Integer id) {
         return jdbcTemplate.findBeanFirst(IcopTest.class, "id", id);
     }
 
     @Override
-    public List<IcopTest> getIcops() {
+    public List<IcopTest> getIcos() {
         return jdbcTemplate.findBean(IcopTest.class);
     }
 
     @Override
-    public Long delIcop(Integer id) {
+    public Long delIco(Integer id) {
 
         String sql = "delete from icop_test where id=? limit 1";
         return jdbcTemplate.doUpdate(sql, id);
