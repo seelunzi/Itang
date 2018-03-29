@@ -64,6 +64,11 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-1.0-sdk</artifactId>
+            <version>1.9.60</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>icop</finalName>
