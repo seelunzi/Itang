@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/***
+ * @author tang
+ * */
 @InitBean
 public class UserDaoImpl implements UserDao, InitFace {
 
@@ -23,6 +26,7 @@ public class UserDaoImpl implements UserDao, InitFace {
      *
      * @param user
      */
+    @Override
     public void saveOrUpdateUser(UserInfo user) {
         if (StringUtil.isNullOrEmpty(user.getUserId())) {
             user.setUserId(JUUIDUtil.createUuid());
@@ -35,6 +39,7 @@ public class UserDaoImpl implements UserDao, InitFace {
     /**
      * 查询用户列表
      */
+    @Override
     public List<UserInfo> getUsers() {
         Collection<UserInfo> users = dataMap.values();
         return new ArrayList<UserInfo>(users);
@@ -43,6 +48,7 @@ public class UserDaoImpl implements UserDao, InitFace {
     /**
      * 查询用户信息
      */
+    @Override
     public UserInfo getUserInfo(String userId) {
         return dataMap.get(userId);
     }
@@ -52,6 +58,7 @@ public class UserDaoImpl implements UserDao, InitFace {
      *
      * @param userId
      */
+    @Override
     public void deleteUser(String userId) {
         dataMap.remove(userId);
     }
@@ -59,6 +66,7 @@ public class UserDaoImpl implements UserDao, InitFace {
     /**
      * bean加载时执行
      */
+    @Override
     public void init() {
         UserInfo user = new UserInfo();
         user.setAge(18);

@@ -1,6 +1,8 @@
 package org.tang.framework.iface;
 
 public interface InitFace {
-
-    public void init();
+    /***
+     * 初始化接口
+     * */
+    void init();
 }

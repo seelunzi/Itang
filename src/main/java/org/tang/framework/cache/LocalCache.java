@@ -2,8 +2,14 @@ package org.tang.framework.cache;
 
 import org.tang.framework.util.StringUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -15,12 +21,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @SuppressWarnings("unchecked")
 public class LocalCache {
-    private static final Timer timer;
+
+    private static final ScheduledExecutorService scheduledExecutorService;
     private static final ConcurrentHashMap<String, Object> map;
     static Object mutex = new Object();
 
     static {
-        timer = new Timer();
+        scheduledExecutorService = Executors.newScheduledThreadPool(6);
         map = new ConcurrentHashMap<String, Object>();
     }
 
@@ -34,7 +41,16 @@ public class LocalCache {
     public static void setCache(String key, Object ce,
                                 int validityTime) {
         map.put(key, new CacheWrapper(validityTime, ce));
-        timer.schedule(new TimeoutTimerTask(key), validityTime * 1000);
+        scheduledExecutorService.schedule(() -> {
+            CacheWrapper cacheWrapper = (CacheWrapper) map.get(key);
+            if (cacheWrapper == null || cacheWrapper.getDate() == null) {
+                return;
+            }
+            if (System.currentTimeMillis() < cacheWrapper.getDate().getTime()) {
+                return;
+            }
+            LocalCache.delCache(key);
+        }, validityTime * 1000, TimeUnit.DAYS);
     }
 
     //获取缓存KEY列表
@@ -70,7 +86,6 @@ public class LocalCache {
      *
      * @param key
      * @param ce
-     * @param validityTime 有效时间
      */
     public static void setCache(String key, Object ce) {
         map.put(key, new CacheWrapper(ce));
@@ -125,7 +140,6 @@ public class LocalCache {
     /**
      * 获取缓存大小
      *
-     * @param key
      */
     public static int getCacheSize() {
         return map.size();
@@ -138,35 +152,6 @@ public class LocalCache {
         map.clear();
     }
 
-    /**
-     * @projName：lottery
-     * @className：TimeoutTimerTask
-     * @description：清除超时缓存定时服务类
-     * @creater：Coody
-     * @creatTime：2014年5月7日上午9:34:39
-     * @alter：Coody
-     * @alterTime：2014年5月7日 上午9:34:39
-     * @remark：
-     */
-    static class TimeoutTimerTask extends TimerTask {
-        private String ceKey;
-
-        public TimeoutTimerTask(String key) {
-            this.ceKey = key;
-        }
-
-        @Override
-        public void run() {
-            CacheWrapper cacheWrapper = (CacheWrapper) map.get(ceKey);
-            if (cacheWrapper == null || cacheWrapper.getDate() == null) {
-                return;
-            }
-            if (new Date().getTime() < cacheWrapper.getDate().getTime()) {
-                return;
-            }
-            LocalCache.delCache(ceKey);
-        }
-    }
 
     private static class CacheWrapper {
         private Date date;
