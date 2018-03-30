@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @PathBinding("/icop")
-public class IcopController {
+public class IcoController {
 
 
     @OutBean

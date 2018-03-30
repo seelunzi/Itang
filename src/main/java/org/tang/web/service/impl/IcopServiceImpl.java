@@ -17,19 +17,19 @@ public class IcopServiceImpl implements IcopService {
 
     @Override
     public IcopTest getIcop(Integer id) {
-        return icopDao.getIcop(id);
+        return icopDao.getIco(id);
     }
 
     @Override
     public List<IcopTest> getIcops() {
-        return icopDao.getIcops()
+        return icopDao.getIcos()
                 ;
     }
 
     @Transacted
     @Override
     public Long delIcop(Integer id) {
-        Long code = icopDao.delIcop(id);
+        Long code = icopDao.delIco(id);
         Integer i = 50 / 0;
         System.out.println(i);
         return code;

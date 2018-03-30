@@ -11,22 +11,22 @@ public interface UserService {
      *
      * @param user
      */
-    public void saveOrUpdateUser(UserInfo user);
+    void saveOrUpdateUser(UserInfo user);
 
     /**
      * 查询用户列表
      */
-    public List<UserInfo> getUsers();
+    List<UserInfo> getUsers();
 
     /**
      * 删除用户
      *
      * @param userId
      */
-    public void deleteUser(String userId);
+    void deleteUser(String userId);
 
     /**
      * 查询用户信息
      */
-    public UserInfo getUserInfo(String userId);
+    UserInfo getUserInfo(String userId);
 }

@@ -7,11 +7,11 @@ import java.util.List;
 public interface IcopService {
 
 
-    public IcopTest getIcop(Integer id);
+    IcopTest getIcop(Integer id);
 
 
-    public List<IcopTest> getIcops();
+    List<IcopTest> getIcops();
 
-    public Long delIcop(Integer id);
+    Long delIcop(Integer id);
 
 }
