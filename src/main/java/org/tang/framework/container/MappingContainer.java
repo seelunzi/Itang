@@ -2,11 +2,9 @@ package org.tang.framework.container;
 
 import lombok.Data;
 import org.tang.framework.entity.BaseModel;
-import org.tang.framework.entity.BeanEntity;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -43,7 +41,5 @@ public class MappingContainer {
         private Method method;
 
         private Object bean;
-
-        private List<BeanEntity> paramTypes;
     }
 }

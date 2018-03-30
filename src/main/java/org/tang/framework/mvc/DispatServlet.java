@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.MessageFormat;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings("serial")
 public class DispatServlet extends HttpServlet {
 

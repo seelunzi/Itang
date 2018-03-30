@@ -6,6 +6,9 @@ import org.tang.framework.entity.BaseModel;
 
 import java.lang.reflect.Method;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings("serial")
 @Data
 public class AspectPoint extends BaseModel {
