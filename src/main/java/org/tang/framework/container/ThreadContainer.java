@@ -6,7 +6,6 @@ import java.util.Map;
 /***
  * @author tang
  * */
-@SuppressWarnings("unchecked")
 public class ThreadContainer {
 
     public static ThreadLocal<Map<String, Object>> threadLocal = new ThreadLocal<Map<String, Object>>();
@@ -20,7 +19,7 @@ public class ThreadContainer {
         if (threadLocal.get() != null) {
             return;
         }
-        threadLocal.set(new HashMap<String, Object>());
+        threadLocal.set(new HashMap<String, Object>(16));
     }
 
     public static void set(String fieldName, Object value) {

@@ -10,6 +10,9 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+/***
+ *@author tang
+ * */
 @SuppressWarnings("unchecked")
 public class PropertUtil {
 
@@ -418,7 +421,7 @@ public class PropertUtil {
     /**
      * 设置字段值
      *
-     * @param obj          实例对象
+     * @param object          实例对象
      * @param propertyName 属性名
      * @param value        新的字段值
      * @return

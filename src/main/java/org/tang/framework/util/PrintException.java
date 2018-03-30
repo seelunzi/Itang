@@ -6,6 +6,9 @@ import org.tang.framework.base.BaseLogger;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+/***
+ * @author tang
+ * */
 public class PrintException {
 
     /**

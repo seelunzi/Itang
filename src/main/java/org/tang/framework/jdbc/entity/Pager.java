@@ -1,10 +1,12 @@
 package org.tang.framework.jdbc.entity;
 
+import lombok.Data;
 import org.tang.framework.entity.BaseModel;
 
 import java.util.List;
 
 @SuppressWarnings("serial")
+@Data
 public class Pager extends BaseModel {
 
     private Integer totalRows;
@@ -16,27 +18,6 @@ public class Pager extends BaseModel {
     private Integer viewBegin = 1;
     private Integer viewEnd = 1;
     private List<?> data;
-
-
-    public Integer getViewBegin() {
-        return viewBegin;
-    }
-
-
-    public void setViewBegin(Integer viewBegin) {
-        this.viewBegin = viewBegin;
-    }
-
-
-    public Integer getViewEnd() {
-        return viewEnd;
-    }
-
-
-    public void setViewEnd(Integer viewEnd) {
-        this.viewEnd = viewEnd;
-    }
-
 
     public Pager(Integer pageSize) {
         super();
@@ -58,23 +39,9 @@ public class Pager extends BaseModel {
         this.currentPage = currentPage;
     }
 
-
     public Pager() {
         this.currentPage = 1;
         this.startRow = 0;
-    }
-
-    @SuppressWarnings("unchecked")
-    public <T> List<T> getData() {
-        return (List<T>) data;
-    }
-
-    public void setData(List<?> data) {
-        this.data = data;
-    }
-
-    public Integer getCurrentPage() {
-        return currentPage;
     }
 
     public void setCurrentPage(Integer currPage) {
@@ -98,25 +65,6 @@ public class Pager extends BaseModel {
         this.pageSize = pageSize;
     }
 
-    public Integer getStartRow() {
-        return startRow != 0 ? startRow : (currentPage - 1) * pageSize;
-    }
-
-    public void setStartRow(Integer startRow) {
-        this.startRow = startRow;
-    }
-
-    public Integer getTotalPage() {
-        return totalPage;
-    }
-
-    public void setTotalPage(Integer totalPage) {
-        this.totalPage = totalPage;
-    }
-
-    public Integer getTotalRows() {
-        return totalRows;
-    }
 
     public void setTotalRows(Integer totalRows) {
         this.totalRows = totalRows;
@@ -150,11 +98,4 @@ public class Pager extends BaseModel {
         }
     }
 
-    public Integer getFormNumber() {
-        return formNumber;
-    }
-
-    public void setFormNumber(Integer formNumber) {
-        this.formNumber = formNumber;
-    }
 }

@@ -8,6 +8,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author tang
+ */
 @SuppressWarnings("serial")
 public class BaseModel implements Serializable {
 

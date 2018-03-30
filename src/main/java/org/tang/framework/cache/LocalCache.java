@@ -1,5 +1,6 @@
 package org.tang.framework.cache;
 
+import lombok.Data;
 import org.tang.framework.util.StringUtil;
 
 import java.util.ArrayList;
@@ -13,11 +14,9 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * @className：CacheHandler
- * @description：缓存操作类，对缓存进行管理,清除方式采用Timer定时的方式
- * @creater：Coody
- * @creatTime：2014年5月7日 上午9:18:54
- * @remark：
+ * @author tang
+ * 缓存操作类，对缓存进行管理,清除方式采用Timer定时的方式
+ *
  */
 @SuppressWarnings("unchecked")
 public class LocalCache {
@@ -154,7 +153,7 @@ public class LocalCache {
         map.clear();
     }
 
-
+    @Data
     private static class CacheWrapper {
         private Date date;
         private Object value;
@@ -168,12 +167,5 @@ public class LocalCache {
             this.value = value;
         }
 
-        public Date getDate() {
-            return date;
-        }
-
-        public Object getValue() {
-            return value;
-        }
     }
 }

@@ -1,5 +1,8 @@
 package org.tang.framework.constant;
 
+/***
+ * @author tang
+ * */
 public class GeneralFinal {
 
     /**

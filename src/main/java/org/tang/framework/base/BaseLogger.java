@@ -21,7 +21,6 @@ public class BaseLogger {
         this.logger = logger;
     }
 
-
     /**
      * 获取日志
      *

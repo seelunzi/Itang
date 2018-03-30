@@ -19,7 +19,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/***
+ * @author tang
+ * */
 public class JdbcUtil {
 
 
@@ -125,7 +127,7 @@ public class JdbcUtil {
     /**
      * 获取模型对应的数据库表名
      *
-     * @param obj
+     * @param clazz
      * @return
      */
     public static String getTableName(Class<?> clazz) {

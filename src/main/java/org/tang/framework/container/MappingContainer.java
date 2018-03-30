@@ -11,7 +11,6 @@ import java.util.concurrent.ConcurrentHashMap;
 /***
  * @author tang
  * */
-@SuppressWarnings("unchecked")
 public class MappingContainer {
 
     private static Map<String, Object> mvcMap = new ConcurrentHashMap<String, Object>();
