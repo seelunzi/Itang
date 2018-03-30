@@ -1,5 +1,8 @@
 package org.tang.framework.exception;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings("serial")
 public class BeanNotFoundException extends Exception {
 

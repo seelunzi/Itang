@@ -50,16 +50,13 @@ public class TaskTrigger {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DateUtils.DATETIME_PATTERN, Locale.CHINA);
         Date nextRunDate = DateUtils.toDate(zonedDateTime.toLocalDateTime().format(formatter));
         logger.debug(bean.getClass().getName() + ":" + method.getName() + " will run on " + DateUtils.toString(nextRunDate));
-        long timeRage = nextRunDate.getTime() - new Date().getTime();
-        TaskThreadPool.taskPool.schedule(new Runnable() {
-            @Override
-            public void run() {
-                Object[] params = {};
-                try {
-                    method.invoke(bean, params);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        long timeRage = nextRunDate.getTime() - System.currentTimeMillis();
+        TaskThreadPool.taskPool.schedule(() -> {
+            Object[] params = {};
+            try {
+                method.invoke(bean, params);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }, timeRage, TimeUnit.MILLISECONDS);
     }
