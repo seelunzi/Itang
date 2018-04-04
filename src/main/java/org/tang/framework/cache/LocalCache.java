@@ -13,11 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * @className：CacheHandler
- * @description：缓存操作类，对缓存进行管理,清除方式采用Timer定时的方式
- * @creater：Coody
- * @creatTime：2014年5月7日 上午9:18:54
- * @remark：
+ * @author tang
  */
 @SuppressWarnings("unchecked")
 public class LocalCache {
