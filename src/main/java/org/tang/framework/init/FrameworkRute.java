@@ -21,6 +21,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/***
+ * @author tang
+ * */
 public class FrameworkRute {
 
     private static final Logger logger = Logger.getLogger(FrameworkRute.class);
@@ -29,7 +32,6 @@ public class FrameworkRute {
 
     public static void init(String... packets) throws Exception {
         Set<Class<?>> clazzs = new HashSet<Class<?>>();
-
         for (String packet : packets) {
             Set<Class<?>> clazzsTemp = ClassUtil.getClasses(packet);
             clazzs.addAll(clazzsTemp);
@@ -46,7 +48,6 @@ public class FrameworkRute {
         initField();
         initMvc(clazzs);
         initRun(clazzs);
-
     }
 
     public static void initTask(Set<Class<?>> clas) {

@@ -18,6 +18,9 @@ import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+/***
+ * @author tang
+ * */
 public class CglibProxy implements MethodInterceptor {
 
     /**
@@ -105,7 +108,10 @@ public class CglibProxy implements MethodInterceptor {
         return true;
     }
 
-    // 拦截父类所有方法的调用
+    /***
+     * 拦截父类所有方法的调用
+     */
+    @Override
     public Object intercept(Object bean, Method method, Object[] params, MethodProxy proxy) throws Throwable {
         if (!interceptMap.containsKey(method)) {
             return proxy.invokeSuper(bean, params);

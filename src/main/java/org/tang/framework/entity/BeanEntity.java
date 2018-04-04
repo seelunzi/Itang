@@ -1,11 +1,16 @@
 package org.tang.framework.entity;
 
+import lombok.Data;
 import org.tang.framework.util.StringUtil;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
+/***
+ * @author tang
+ * */
 @SuppressWarnings("serial")
+@Data
 public class BeanEntity extends BaseModel {
 
     private String fieldName;
@@ -25,46 +30,4 @@ public class BeanEntity extends BaseModel {
         }
         return null;
     }
-
-    public Field getSourceField() {
-        return sourceField;
-    }
-
-    public void setSourceField(Field sourceField) {
-        this.sourceField = sourceField;
-    }
-
-    public String getFieldName() {
-        return fieldName;
-    }
-
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
-    public Object getFieldValue() {
-        return fieldValue;
-    }
-
-    public void setFieldValue(Object fieldValue) {
-        this.fieldValue = fieldValue;
-    }
-
-    public Class<?> getFieldType() {
-        return fieldType;
-    }
-
-    public void setFieldType(Class<?> fieldType) {
-        this.fieldType = fieldType;
-    }
-
-    public Annotation[] getFieldAnnotations() {
-        return fieldAnnotations;
-    }
-
-    public void setFieldAnnotations(Annotation[] fieldAnnotations) {
-        this.fieldAnnotations = fieldAnnotations;
-    }
-
-
 }
