@@ -4,14 +4,14 @@ import org.tang.web.domain.IcopTest;
 
 import java.util.List;
 
+/****
+ * @author tang
+ * */
 public interface IcopService {
 
+    IcopTest getIcop(Integer id);
 
-    public IcopTest getIcop(Integer id);
+    List<IcopTest> getIcops();
 
-
-    public List<IcopTest> getIcops();
-
-    public Long delIcop(Integer id);
-
+    Long delIcop(Integer id);
 }

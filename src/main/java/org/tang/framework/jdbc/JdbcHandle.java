@@ -82,13 +82,21 @@ public class JdbcHandle {
         }
     }
 
-    // 驱动程序名
+    /***
+     * 驱动程序名
+     * */
     String driver = "";
-    // URL指向要访问的数据库名scutcs
+    /****
+     * URL指向要访问的数据库名scutcs
+     */
     String url = "";
-    // MySQL配置时的用户名
+    /***
+     *  MySQL配置时的用户名
+     * */
     String user = "";
-    // MySQL配置时的密码
+    /***
+     * MySQL配置时的密码
+     * */
     String password = "";
 
     public List<Map<String, Object>> baseQuery(String sql, Object... params) {
@@ -800,7 +808,7 @@ public class JdbcHandle {
         } catch (Exception e) {
 
         }
-        return -1l;
+        return -1L;
     }
 
     /**

@@ -7,6 +7,9 @@ import org.tang.framework.aspect.entity.AspectEntity;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/***
+ * @author tang
+ * */
 public class FrameworkConstant {
 
     /**

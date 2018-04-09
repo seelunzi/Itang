@@ -33,7 +33,9 @@ public class AspectUtil {
         return key;
     }
 
-    // 将对象内所有字段名、字段值拼接成字符串，用于缓存Key
+    /**
+     * 将对象内所有字段名、字段值拼接成字符串，用于缓存Key
+     */
     public static String getBeanKey(Object... obj) {
         if (StringUtil.isNullOrEmpty(obj)) {
             return "";

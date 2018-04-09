@@ -1,17 +1,17 @@
 package org.tang.web.comm.entity;
 
+import lombok.Data;
 import org.tang.framework.entity.BaseModel;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Coody
+ * @author tang
  * @remark 消息机制容器。
- * @email 644556636@qq.com
- * @blog 54sb.org
  */
 @SuppressWarnings("serial")
+@Data
 public class MsgEntity extends BaseModel {
 
     public Integer code;
@@ -47,29 +47,4 @@ public class MsgEntity extends BaseModel {
             // TODO: handle exception
         }
     }
-
-    public Object getDatas() {
-        return datas;
-    }
-
-    public void setDatas(Object datas) {
-        this.datas = datas;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
 }

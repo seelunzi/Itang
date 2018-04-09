@@ -21,6 +21,7 @@ public class GeneralServletListen implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
         try {
+            String scanPacket = event.getServletContext().getInitParameter("scanPacket");
             String packet = event.getServletContext().getInitParameter("scanPacket");
             if (StringUtil.isNullOrEmpty(packet)) {
                 logger.error("启动参数:scanPacket为空");

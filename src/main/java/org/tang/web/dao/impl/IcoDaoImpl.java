@@ -8,6 +8,9 @@ import org.tang.web.domain.IcopTest;
 
 import java.util.List;
 
+/****
+ * @author tang
+ * */
 @InitBean
 public class IcoDaoImpl implements IcoDao {
 

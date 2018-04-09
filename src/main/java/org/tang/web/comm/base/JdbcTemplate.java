@@ -7,10 +7,13 @@ import org.tang.framework.jdbc.JdbcHandle;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
 
+/***
+ * @author tang
+ * */
 @InitBean
 public class JdbcTemplate extends JdbcHandle implements InitFace {
 
-
+    @Override
     public void init() {
         try {
             initConfig("config/c3p0.properties");

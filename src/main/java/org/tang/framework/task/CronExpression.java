@@ -172,13 +172,15 @@ public class CronExpression {
 
     public CronExpression(final String expr, final boolean withSeconds) {
         if (expr == null) {
-            throw new IllegalArgumentException("expr is null"); //$NON-NLS-1$
+            //$NON-NLS-1$
+            throw new IllegalArgumentException("expr is null");
         }
 
         this.expr = expr;
 
         final int expectedParts = withSeconds ? 6 : 5;
-        final String[] parts = expr.split("\\s+"); //$NON-NLS-1$
+        //$NON-NLS-1$
+        final String[] parts = expr.split("\\s+");
         if (parts.length != expectedParts) {
             throw new IllegalArgumentException(String.format("Invalid cron expression [%s], expected %s field, got %s",
                     expr, expectedParts, parts.length));
@@ -218,13 +220,18 @@ public class CronExpression {
     public ZonedDateTime nextTimeAfter(ZonedDateTime afterTime, ZonedDateTime dateTimeBarrier) {
         ZonedDateTime nextTime = ZonedDateTime.from(afterTime).withNano(0).plusSeconds(1).withNano(0);
         ;
-
-        while (true) { // day of week
-            while (true) { // month
-                while (true) { // day of month
-                    while (true) { // hour
-                        while (true) { // minute
-                            while (true) { // second
+        // day of week
+        while (true) {
+            // month
+            while (true) {
+                // day of month
+                while (true) {
+                    // hour
+                    while (true) {
+                        // minute
+                        while (true) {
+                            // second
+                            while (true) {
                                 if (secondField.matches(nextTime.getSecond())) {
                                     break;
                                 }

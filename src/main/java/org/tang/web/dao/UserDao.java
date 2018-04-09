@@ -18,11 +18,16 @@ public interface UserDao {
 
     /**
      * 查询用户列表
+     *
+     * @return 用户信息集合
      */
     List<UserInfo> getUsers();
 
     /**
      * 查询用户信息
+     *
+     * @param userId 用户id
+     * @return 用户信息
      */
     UserInfo getUserInfo(String userId);
 

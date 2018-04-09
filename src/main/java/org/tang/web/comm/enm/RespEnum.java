@@ -8,8 +8,8 @@ import org.tang.framework.util.PropertUtil;
  * @author deng
  */
 public enum RespEnum {
-
-    SUCCESS(0, "操作成功"),// 成功标志
+    // 成功标志
+    SUCCESS(0, "操作成功"),
     COMMAND_ERROR(1, "指令有误"),
     SYSTEM_ERROR(2, "系统繁忙"),
     PARAM_ISERRPR(3, "参数有误"),
